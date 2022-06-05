@@ -1,17 +1,53 @@
-<form class="" #form="ngForm" (ngSubmit)="onSubmit(form)">
-    <label for="purchasePrice" >Purchase Price $</label>
-    <input  class="slider" name="purchasePrice" [(ngModel)]="purchasePrice">
+<div class="calc-form-container">
+    <h1>Mortgage Calculator</h1>
+    <form class="calc-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="form-section">
+            <label for="purchasePrice" >Purchase Price $</label>
+            <input  
+            class="slider" 
+            name="purchasePrice"  
+            [(ngModel)]="years"
+            required
+            pattern="^[1-9]+[0-9]*$"
+            >
+    
+            <label for="downPayment" >Down Payment $</label>
+            <input 
+            class="slider" 
+            name="downPayment"  
+            [(ngModel)]="purchasePrice" 
+             
+            required
+            >
+        </div>
+            
+        <div class="form-section">
+            <label for="repaymentTime" >Repayment Time</label>
+            <input 
+            class="slider" 
+            name="repaymentTime"  
+            [(ngModel)]="downPayment" 
+            required
+            >
+        
+            <label for="interestRate" >Interest Rate %</label>
+            <input 
+            class="slider" 
+            name="interestRate"  
+            [(ngModel)]="interest"
+            required>
+        </div>
+          
+     
+        
+        <h3>Loan Amount:{{loanAmount | currency}}</h3>
+        <h3>Estimated Per Month:{{ perMonth | currency}}</h3>
+        <button  [disabled]="!form.valid">Get Mortgage Quote</button>
+        <span class="warning" *ngIf="form.value.purchasePrice <= 0 && form.dirty">Please enter a number greater than 0!</span>
+        <span class="warning" *ngIf="form.value.downPayment < 0 && form.dirty">Please enter a number greater than or equal to 0!</span>
+        <span class="warning" *ngIf="form.value.repaymentTime <= 0 && form.dirty">Please enter a number equal to or greater than 0!</span>
+        <span class="warning" *ngIf="form.value.interest <= 0 && form.dirty">Please enter a number greater than or equal to 0!</span>
+    </form>
+</div>
 
-    <label for="downPayment" >Down Payment $</label>
-    <input class="slider" name="downPayment" [(ngModel)]="downPayment">
-
-    <label for="repaymentTime" >Repayment Time $</label>
-    <input class="slider" name="repaymentTime" [(ngModel)]="years">
-
-    <label for="interestRate" >Interest Rate %</label>
-    <input class="slider" name="interestRate" [(ngModel)]="interest">
-
-    <h1>Loan Amount:{{loanAmount | currency}}</h1>
-    <h1>Estimated Per Month:{{ perMonth | currency}}</h1>
-    <button class="submit-button">Get Mortgage Quote</button>
-</form>
+    
