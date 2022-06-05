@@ -8,13 +8,13 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent implements OnInit {
-  public time: number;
+  public years: number;
   public purchasePrice: number;
   public downPayment: number;
   public interest: number;
-
+  
   public loanAmount: number = 0;
-  public estimatedPerMonth: number = 0;
+  public perMonth: number = 0;
 
   constructor() {
     
@@ -22,12 +22,12 @@ export class CalculatorComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+// USE NG FORM
   public onSubmit(form: NgForm) {
-    console.log(this.time)
-    console.log(this.purchasePrice)
-    console.log(this.downPayment)
-    console.log(this.interest)
+    this.loanAmount = this.purchasePrice - this.downPayment;
+    let lengthOfLoan = this.years * 12;
+    let percentageRate = this.interest / 1200
+    this.perMonth = (this.loanAmount * percentageRate) / (1 - (Math.pow((1 + percentageRate) , lengthOfLoan * -1)));
+    
   }
-
 }
