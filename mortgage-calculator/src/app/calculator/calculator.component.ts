@@ -24,10 +24,9 @@ export class CalculatorComponent implements OnInit {
   }
 // USE NG FORM
   public onSubmit(form: NgForm) {
-    this.loanAmount = this.purchasePrice - this.downPayment;
-    let lengthOfLoan = this.years * 12;
-    let percentageRate = this.interest / 1200
-    this.perMonth = (this.loanAmount * percentageRate) / (1 - (Math.pow((1 + percentageRate) , lengthOfLoan * -1)));
-    
+    let lengthOfLoan = form.value.repaymentTime * 12;
+    let percentageRate = form.value.interestRate / 1200
+    this.loanAmount = form.value.purchasePrice  - form.value.downPayment;
+    this.perMonth = (form.value.purchasePrice * percentageRate) / (1 - (Math.pow((1 + percentageRate) , lengthOfLoan * -1)));
   }
 }

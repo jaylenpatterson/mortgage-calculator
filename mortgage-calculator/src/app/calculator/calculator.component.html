@@ -1,15 +1,15 @@
 <form class="" #form="ngForm" (ngSubmit)="onSubmit(form)">
-    <label for="purchase-price" >Purchase Price $</label>
-    <input  class="slider" name="purchase-price" [(ngModel)]="purchasePrice">
+    <label for="purchasePrice" >Purchase Price $</label>
+    <input  class="slider" name="purchasePrice" [(ngModel)]="purchasePrice">
 
-    <label for="down-payment" >Down Payment $</label>
-    <input class="slider" name="down-payment" [(ngModel)]="downPayment">
+    <label for="downPayment" >Down Payment $</label>
+    <input class="slider" name="downPayment" [(ngModel)]="downPayment">
 
-    <label for="repayment-time" >Repayment Time $</label>
-    <input class="slider" name="repayment-time" [(ngModel)]="years">
+    <label for="repaymentTime" >Repayment Time $</label>
+    <input class="slider" name="repaymentTime" [(ngModel)]="years">
 
-    <label for="interest-rate" >Interest Rate %</label>
-    <input class="slider" name="interest-rate" [(ngModel)]="interest">
+    <label for="interestRate" >Interest Rate %</label>
+    <input class="slider" name="interestRate" [(ngModel)]="interest">
 
     <h1>Loan Amount:{{loanAmount | currency}}</h1>
     <h1>Estimated Per Month:{{ perMonth | currency}}</h1>
